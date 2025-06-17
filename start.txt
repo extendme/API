@@ -1,0 +1,19 @@
+我們使用虛擬環境來執行      (python venv)
+所以使用時需要 進入虛擬環境
+下面這行是進入虛擬環境
+source venv/bin/activate
+
+但虛擬環境無法適配每個人電腦 所以提供requirements.txt
+請根據以下指令 去創建虛擬機 然後使用requirements.txt去安裝所需套件
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# venv\Scripts\activate    # Windows
+pip install -r requirements.txt
+
+若要執行程式 請用指令的方式 在termial 呼叫
+範例:python app.py
+
+設計分為兩個部分：
+使用者介面顯示 使用的是Gradio
+模性雲端計算 使用的是Hugging Face
+
