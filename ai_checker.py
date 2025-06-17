@@ -1,25 +1,17 @@
+# ai_checker.py
 import gradio as gr
-from PIL import Image
-import numpy as np
+from image_app import is_ai_image
 
-# 模擬圖片判斷邏輯
-def is_ai_image(image: Image.Image):
-    if image is None:
-        return "請上傳圖片"
-    # TODO: 在這裡接入圖片模型
-    return "這是一張 AI 生成圖片（模擬）"
-
-# 模擬語音判斷邏輯
+# 語音部分模擬函式（你之後可整合語音模型）
 def is_ai_voice(audio):
     if audio is None:
         return "請上傳語音"
-    # audio = (sample_rate, np.array)
-    # TODO: 在這裡接入語音模型
     return "這是一段 AI 生成語音（模擬）"
 
-# Gradio 分頁介面（Tabs）
+# Gradio 分頁介面
 with gr.Blocks(title="AI 真假判斷系統") as demo:
     gr.Markdown("## AI 圖片與語音鑑別系統")
+    
     with gr.Tab("image_checker"):
         img_input = gr.Image(type="pil", label="上傳圖片")
         img_output = gr.Text(label="判斷結果")
