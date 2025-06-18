@@ -2,11 +2,14 @@ import torch
 from torchvision import models, transforms
 from torch import nn
 from PIL import Image
+from huggingface_hub import hf_hub_download
+
+model_path = hf_hub_download(repo_id="popotree/image_pth", filename="resnet18-5c106cde.pth")
 
 # === 載入模型 ===
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = models.resnet18(pretrained=False)
-model.load_state_dict(torch.load("resnet18-5c106cde.pth", weights_only=False, map_location=device), strict=True)
+model = models.resnet18(weights=None)
+model.load_state_dict(torch.load(model_path, weights_only=False, map_location=device), strict=True)
 model.fc = nn.Linear(model.fc.in_features, 2)
 model = model.to(device).eval()
 
