@@ -1,6 +1,6 @@
 # ai_checker.py
 import gradio as gr
-from image_app import is_ai_image
+from ai_detector_func import predict_image
 
 # 語音部分模擬函式（你之後可整合語音模型）
 def is_ai_voice(audio):
@@ -16,7 +16,7 @@ with gr.Blocks(title="AI 真假判斷系統") as demo:
         img_input = gr.Image(type="pil", label="上傳圖片")
         img_output = gr.Text(label="判斷結果")
         img_button = gr.Button("辨識圖片")
-        img_button.click(fn=is_ai_image, inputs=img_input, outputs=img_output)
+        img_button.click(fn=predict_image, inputs=img_input, outputs=img_output)
 
     with gr.Tab("audio_checker"):
         audio_input = gr.Audio(type="numpy", label="上傳語音（wav/mp3）")
